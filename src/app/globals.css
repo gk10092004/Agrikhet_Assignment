@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+html{
+  -ms-overflow-style: none;  /* For Internet Explorer */
+    scrollbar-width: none; 
+}
+html, body {
+  height: 100%;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* For Internet Explorer */
+    scrollbar-width: none;  /* For Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
+  }
+  
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+  -moz-appearance: textfield;
+}
+
