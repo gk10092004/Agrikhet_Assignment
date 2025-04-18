@@ -22,7 +22,7 @@ export default function CartPage() {
         router.push('/signup');
       } 
     }, 100); // slight delay to prevent UI flicker
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     setLoading(false);

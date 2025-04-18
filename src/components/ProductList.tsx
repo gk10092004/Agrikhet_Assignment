@@ -22,6 +22,10 @@ export default function ProductList() {
   const [category, setCategory] = useState('All')
   const [query, setQuery] = useState('')
 
+  useEffect(()=>{
+    setCategory('All');
+    setQuery('');
+  },[])
   useEffect(() => {
     fetch('/api/products')
       .then(res => res.json())

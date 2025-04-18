@@ -18,7 +18,7 @@ const Login = () => {
         setShowError(false);
       };
     }, [error]);
-    const LoginToHome = async (e) => {
+    const LoginToHome = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
     
       try {

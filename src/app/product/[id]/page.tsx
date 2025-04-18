@@ -7,11 +7,25 @@ import LoadingProductDetail from '../../../components/LoadingProductDetail'
 import ErrorMessage from '../../../components/ErrorMessage'
 import Image from 'next/image'
 import ProductCard from '@/components/ProductCard'
+type Product = {
+  id: number;
+  name: string;
+  category: string;
+  description: string;
+  price: number;
+  delivery: string;
+  available: boolean;
+  image: string[]; // full list of images
+};
 
+type CartItem = Omit<Product, 'image'> & {
+  quantity: number;
+  image: string; // only one image (the primary one)
+};
 export default function ProductDetail() {
   const { id } = useParams()
-  const [product, setProduct] = useState<any>(null)
-  const [fourSimilarProd, setFourSimilarProd] = useState<any>([])
+  const [product, setProduct] = useState<Product | null>(null)
+  const [fourSimilarProd, setFourSimilarProd] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [quantity, setQuantity] = useState(1)
@@ -32,11 +46,11 @@ export default function ProductDetail() {
     fetch('/api/products')
       .then(res => res.json())
       .then(data => {
-        const selected = data.find((p: any) => p.id == id)
+        const selected = data.find((p: Product) => p.id === Number(id))
         if (!selected) throw new Error()
         setProduct(selected)
         const cat = selected.category
-        const relatedData = data.filter((p: any) => p.category === cat && p.id !== id)
+        const relatedData = data.filter((p: Product) => p.category === cat && p.id !== selected.id)
         const shuffled = [...relatedData].sort(() => Math.random() - 0.5)
         setFourSimilarProd(shuffled.slice(0, 4))
       })
@@ -57,9 +71,20 @@ export default function ProductDetail() {
     setCurrentIndex(prev => (prev - 1 + imageLen) % imageLen)
   }
 
+  const handleAddToCart = () => {
+    if (product) {
+      const cartItem: CartItem = {
+        ...product,
+        quantity,
+        image: product.image[0],
+      }
+      addToCart(cartItem)
+      router.push('/cart')
+    }
+  }
+
   return (
     <div className="w-full px-4 md:px-8 lg:px-20 py-6 flex flex-col gap-8">
-      {/* <div className=" px-4 md:px-8 lg:px-20 flex "></div> */}
       {/* Top Section - Product Detail */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* Product Image Carousel */}
@@ -113,10 +138,7 @@ export default function ProductDetail() {
           {/* Add to Cart */}
           <button
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-            onClick={() => {
-              addToCart({ ...product, quantity })
-              router.push('/cart')
-            }}
+            onClick={handleAddToCart}
             disabled={!product.available}
           >
             {product.available ? 'Add to Cart' : 'Out of Stock'}
@@ -128,7 +150,7 @@ export default function ProductDetail() {
       <div className="flex flex-col gap-4">
         <div className="text-2xl sm:text-3xl font-semibold text-center">Shop Similar</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {fourSimilarProd.map((product: any) => (
+          {fourSimilarProd.map((product: Product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

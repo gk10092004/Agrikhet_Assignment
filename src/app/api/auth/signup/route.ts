@@ -1,11 +1,11 @@
 // src/app/api/auth/signup/route.js
 
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest  } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { connectDB } from '@/lib/db';
 import User from '@/models/user';
 
-export async function POST(req) {
+export async function POST(req: NextRequest ) {
   try {
     const { name, email, password } = await req.json();
     await connectDB();
