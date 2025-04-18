@@ -22,7 +22,7 @@ export default function OrderConfirmation() {
         router.push('/signup');
       } 
     }, 100);
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     const data = localStorage.getItem('deliveryDetail');

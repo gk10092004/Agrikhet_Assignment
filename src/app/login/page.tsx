@@ -1,9 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import ErrorMessage from "@/components/ErrorMessage";
-// import logo from '../assets/cmedial.png';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -54,9 +52,7 @@ const Login = () => {
     };
     
   
-  const goHome = () => {
-    router.push("/");
-  };
+  
 
   return (
     <div className="w-full h-full flex justify-center items-center">

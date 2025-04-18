@@ -20,6 +20,6 @@ export async function POST(req) {
 
     return NextResponse.json({ message: 'User created successfully', user: newUser });
   } catch (err) {
-    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
+    return NextResponse.json({ error: 'Something went wrong',err }, { status: 500 });
   }
 }

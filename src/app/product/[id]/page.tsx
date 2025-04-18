@@ -26,7 +26,7 @@ export default function ProductDetail() {
         router.push('/signup')
       }
     }, 100)
-  }, [])
+  }, [router])
 
   useEffect(() => {
     fetch('/api/products')

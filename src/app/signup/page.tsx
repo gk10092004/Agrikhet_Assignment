@@ -45,9 +45,6 @@ const collectData = async (e: React.FormEvent) => {
     }
   };
   
-    const goHome = () => {
-        router.push("/")
-      }
   return (
     <div className='w-full h-full flex justify-center items-center'>
       <div className={`absolute top-0 right-0 mr-[1rem] w-fit text-center mt-[1rem] 

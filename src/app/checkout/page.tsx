@@ -25,7 +25,7 @@ export default function CheckoutPage() {
     };
   }, [error]);
   //cart summary
-  const { cart, updateQuantity, removeFromCart, clearCart } = useCart()
+  const { cart, updateQuantity,  clearCart } = useCart()
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
   const delivery = subtotal > 0 ? 40 : 0
   const tax = Math.round(subtotal * 0.05)
@@ -40,7 +40,7 @@ export default function CheckoutPage() {
   const [zcode, setZcode] = useState('')
   const [phone, setPhone] = useState('')
   const [promo,setPromo] = useState('');
-  
+  const router = useRouter()
   const [promovalid,setPromovalid] = useState(false);
   const [totalCost, setTotalCost] = useState<number>(0);
     
@@ -52,14 +52,14 @@ export default function CheckoutPage() {
         router.push('/signup');
       } 
     }, 100); // slight delay to prevent UI flicker
-  }, []);
+  }, [router]);
   useEffect(() => {
     setTotalCost(Number(total));
   }, [total]);
     
   // const [check,setCheck] = useState(false);
   const [payment, setPayment] = useState('cod')
-  const router = useRouter()
+
   if (loading) return <LoadingCheckOut />
   if (cart.length === 0) return <div className="container px-[2rem] mx-auto py-8">Your cart is empty.</div>
 

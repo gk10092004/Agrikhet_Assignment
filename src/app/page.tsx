@@ -30,7 +30,7 @@ export default function Home() {
         router.push('/signup');
       }
     }, 100);
-  }, []);
+  }, [router]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
