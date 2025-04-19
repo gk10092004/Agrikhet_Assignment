@@ -38,7 +38,7 @@ export default function Home() {
     const container = scrollRef.current;
     if (!container) return;
     const itemWidth = 120;
-    const scrollAmount = itemWidth * 5;
+    const scrollAmount = itemWidth * 2;
     container.scrollBy({
       left: dir === 'right' ? scrollAmount : -scrollAmount,
       behavior: 'smooth',
@@ -56,7 +56,8 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setFiltered(data);
+        const shuffledProducts = shuffleArray(data);
+        setFiltered(shuffledProducts);
         const allCategory = [
           'All',
           ...Array.from(new Set(data.map((p: Product) => p.category))) as string[],
@@ -67,10 +68,25 @@ export default function Home() {
       .finally(() => setLoading(false));
   }, []);
 
+  
+const shuffleArray = (array: Product[]): Product[] => {
+  const shuffledArray = [...array]; // Make a copy of the original array
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // Random index
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Swap elements
+  }
+  return shuffledArray;
+};
   const handleFilter = (cat: string) => {
     const result = products.filter((p) => p.category.toLowerCase() === cat.toLowerCase());
-    if (result.length) setFiltered(result);
-    else setFiltered(products);
+    if (result.length){
+      const shuffledProducts = shuffleArray(result);
+      setFiltered(shuffledProducts);
+    }
+    else {
+      const shuffledProducts = shuffleArray(products);
+      setFiltered(shuffledProducts);
+    }
   };
 
   const handleSeachFilter = (query: string) => {

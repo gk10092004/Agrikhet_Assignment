@@ -5,8 +5,8 @@ This is a frontend application for a Direct-to-Consumer (D2C) service platform s
 
 ## 🚀 Deployment
 
-🔗 [Live Demo](https://your-deployed-app.vercel.app)  
-🔗 [GitHub Repository](https://github.com/your-username/d2c-service-platform)
+🔗 [Live Demo](https://agrikhet.vercel.app/)  
+🔗 [GitHub Repository](https://github.com/gk10092004/Agrikhet_Assignment)
 
 
 ---
@@ -39,8 +39,9 @@ This is a frontend application for a Direct-to-Consumer (D2C) service platform s
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/d2c-service-platform.git
-cd d2c-service-platform
+
+git clone https://github.com/gk10092004/Agrikhet_Assignment.git
+cd Agrikhet_Assignment
 
 # Install dependencies
 npm install

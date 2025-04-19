@@ -42,7 +42,7 @@ export default function CartPage() {
             {cart.map(item => (
               <li key={item.id} className="flex  sm:flex-row sm:items-center gap-4 sm:gap-6 border-b py-4 sm:py-6">
                 <Image
-                  src={item.image[0]}
+                  src={item.image}
                   alt={item.name}
                   width={80}
                   height={80}
