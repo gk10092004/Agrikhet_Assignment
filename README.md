@@ -16,8 +16,6 @@ This is a frontend application for a Direct-to-Consumer (D2C) service platform s
 - **Next.js 14+** with App Router
 - **TypeScript**
 - **Tailwind CSS** for styling
-- **React Query** for data fetching and caching
-- **Mock API Routes** using Next.js Route Handlers
 - **Mongo Db** for state database
 - **LocalStorage** for persisting cart/auth data
 - other teck

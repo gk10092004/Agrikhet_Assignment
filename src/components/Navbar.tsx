@@ -59,7 +59,7 @@ export default function Navbar() {
         Agrikhet
       </Link>
 
-      {/* Hamburger Menu for Mobile */}
+      
       <div className="lg:hidden">
         <button onClick={() => setMenuOpen(!menuOpen)}>
           <span className="material-symbols-outlined text-3xl">
@@ -68,7 +68,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Desktop Menu */}
+      
       {isMounted && auth && (
         <div className="hidden lg:flex gap-[1rem] items-center">
           <button
@@ -95,7 +95,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Mobile Slide Menu */}
+      
       {isMounted && auth && menuOpen && (
         <div className="lg:hidden absolute top-[100%] left-0 bg-white w-full shadow-lg z-50 py-4 px-6">
           <div
@@ -123,7 +123,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Logout Modal */}
+      
       {logShow && (
         <div className="fixed top-0 left-0 w-full h-full z-[100] bg-[#787878e1] flex justify-center items-center">
           <div className="p-[0.5rem] flex flex-col bg-[#ffffffbf] rounded shadow-md">

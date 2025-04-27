@@ -2,9 +2,9 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { useCart } from '../../../components/CartContext'
-import LoadingProductDetail from '../../../components/LoadingProductDetail'
-import ErrorMessage from '../../../components/ErrorMessage'
+import { useCart } from '@/components/CartContext'
+import LoadingProductDetail from '@/components/LoadingProductDetail'
+import ErrorMessage from '@/components/ErrorMessage'
 import Image from 'next/image'
 import ProductCard from '@/components/ProductCard'
 type Product = {
@@ -15,13 +15,15 @@ type Product = {
   price: number;
   delivery: string;
   available: boolean;
-  image: string[]; // full list of images
+  image: string[]; // images array
 };
+
 
 type CartItem = Omit<Product, 'image'> & {
   quantity: number;
-  image: string; // only one image (the primary one)
+  image: string; // only one image for single small cart
 };
+
 export default function ProductDetail() {
   const { id } = useParams()
   const [product, setProduct] = useState<Product | null>(null)

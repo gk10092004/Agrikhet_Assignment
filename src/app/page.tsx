@@ -70,10 +70,10 @@ export default function Home() {
 
   
 const shuffleArray = (array: Product[]): Product[] => {
-  const shuffledArray = [...array]; // Make a copy of the original array
+  const shuffledArray = [...array]; 
   for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1)); // Random index
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Swap elements
+    const j = Math.floor(Math.random() * (i + 1)); 
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; 
   }
   return shuffledArray;
 };
